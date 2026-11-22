@@ -11,6 +11,26 @@ Add an entry after each step of work. Give the date, the time, the person and th
 - The watchlists use the same search function as the page. Thus they operate with the API and with the sample data.
 - Check: headless Edge with the sample data of PR #24 (save, simulated update, new tags, reset after the visit, remove).
 
+## 2026-11-22 03:00, MikolajRowicki (branch 06-record-schema, issue #3)
+
+- Add `src/models.py`: the record schema (`Innovation`, `FieldValue`), the API responses and the Polish labels of all codes (`LABELS`).
+- Add `src/db.py`: SQLite schema with the tables `innovations` (JSON and filter columns), `innovations_fts` (FTS5), `innovations_vec` (sqlite-vec, cosine, 768 dimensions) and `sources`.
+- Add `tests/fixtures/sample_innovations.json`: 18 real records from RAD-on, NCBR, wartowiedziec.pl and polishscience.pl. The set has all three areas and 9 voivodeships. The records have no names of persons.
+- Add `web/sample/search.json` and `web/sample/innovation.json` for the web page.
+- Add `tests/test_models.py`. The test checks that each quote is a part of the source text. It also checks that `src.criteria.assess()` gives the same assessment again.
+- Changes to the contract of the issue (Maciej must accept them):
+  - full `FieldValue` in the search results;
+  - `trl: null` means "not applicable", and `trl.value: null` means "no data";
+  - `Assessment` has the output of `src/criteria.py` (`score`, `points`, `applicable`, `fact_share`, `missing`).
+- Merge with `main`: remove the planned `GET /api/meta`, because `GET /api/criteria` (Maciej) gives the criteria. The web page keeps its copy of the labels. `LABELS` in `src/models.py` is for the backend.
+- Calculate the assessment of the sample records again with `src.criteria.assess()`.
+- Findings:
+  - The BZP API blocked the second request ("Dostęp zablokowany"). Issue #13 must use a low request rate and a cache.
+  - The publication dates from trafilatura are not correct for gov.pl and wartowiedziec.pl. Thus `data_date` stays empty.
+  - No sample record has the confidence "high", because most criteria are estimates.
+  - Page text contains non-breaking spaces. The pipeline must normalize them before the quote check.
+- A script outside the repository made the sample records.
+
 ## 2026-11-22 02:50, MaciejMomot (branch 09-card-page, issue #6)
 
 - Add the card page `web/innovation.html`. The code is in `web/app.js` and `web/style.css`.
