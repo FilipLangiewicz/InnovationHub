@@ -39,9 +39,6 @@ Read these files before you start a task:
 2. `docs/reports/Innovation radar landscape.md`: the research about existing solutions, data sources, assessment criteria, methods and law. The research was done before the FAQ. Parts about submission, matching with investors and paths are less important now.
 3. `docs/project.md`: the project plan, the architecture and the list of data sources.
 4. `docs/WORKLOG.md`: the last changes.
-5. `KAGGLE.md`: the rules for work with Kaggle. Read it before each task on Kaggle.
-
-If `KAGGLE.md` and this file do not agree, obey this file.
 
 ## Language
 
@@ -200,28 +197,6 @@ The jury checks that the application finds existing innovations, assesses them a
 13. Give a search result in a few seconds. Make the card of a new innovation in 30 seconds or less. Use parallel requests, timeouts, a cache and indexes that the application makes in advance.
 14. If a data source fails, continue with the other sources. Tell the user which source failed.
 15. Show the process on at least two use cases (task section 6). Use different areas, for example a technology from a university and an administrative solution from a JST.
-
-## Kaggle
-
-The local machines have no GPU. Use Kaggle for long computations, for example:
-
-- calculate embeddings for large sets of documents (patents, publications, EU projects);
-- run an open language model on many documents (extraction, classification);
-- measure the quality of the search and of the matching on the full test set.
-
-The application itself must not need Kaggle. It runs on a normal server or on a local computer.
-
-These differences to `KAGGLE.md` apply in this repository:
-
-- Use Python 3.13.
-- `.venv` is in the root folder of the repository. Thus `jobs/kaggle.sh` finds the `kaggle` command in `../.venv`.
-- The repository is the project. Thus `run.py` clones the full repository, not a sparse checkout.
-- The repository is private (see "Git"). Thus `run.py` clones it with a GitHub token from the Kaggle secrets (`UserSecretsClient`). Do not write the token into a file. Do not print the clone URL into the log.
-- `run.py` clones the branch of the task (`BRANCH`), not `main`. Push the branch before the push of the kernel. The log records the commit hash.
-- On Kaggle, install only `requirements-kaggle.txt`. Thus the PyTorch GPU build of Kaggle stays. Write the version of PyTorch into the log.
-- Number the jobs (`YYYY-MM-DD_NN_<job>`) with the same parity rule as the branches (see "Git").
-- Keep the small output files of a job in `jobs/runs/<job folder>/output/<codename>/`. Do not commit model weights, embeddings or large data.
-- If the application uses a result of a job (for example an index or a table), write in `docs/DETAILS.pl.md` the job, the date and the data that made it.
 
 ## Tests
 
