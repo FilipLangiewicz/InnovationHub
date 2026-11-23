@@ -71,10 +71,6 @@ To run the tests, run `uv run --no-project python -m pytest`. The tests need no 
 
 The full description in Polish is in [`docs/DETAILS.pl.md`](docs/DETAILS.pl.md). It gives the rules of the score, the data sources, the limits, the API and the licenses of all components.
 
-## Team
-
-Team CombAIns: [MikolajRowicki](https://github.com/MikolajRowicki), [MaciejMomot](https://github.com/MaciejMomot) and [FilipLangiewicz](https://github.com/FilipLangiewicz).
-
 ## License
 
 [EUPL-1.2](LICENSE)
