@@ -47,7 +47,8 @@ If `KAGGLE.md` and this file do not agree, obey this file.
 
 - Talk to the user in the language of the user.
 - Write code, names, comments, commit messages and internal documentation in English.
-- Write all text that the users or the jury read in Polish: the user interface, the reports of the application, `README.md`, the presentation and the video.
+- Write all text that the users read in Polish: the user interface, the reports of the application, `docs/DETAILS.pl.md`, the presentation and the video.
+- Write `README.md` in English. Keep it short and put the full description into `docs/DETAILS.pl.md`.
 - Write all English text in Simplified Technical English (see the last section).
 
 ## No Claude attribution
@@ -155,7 +156,7 @@ If a package needs the PyTorch CPU index, add `--index-strategy unsafe-best-matc
   - Do not use a license that forbids commercial use or adds other limits of use, for example CC BY-NC.
   - Use model weights only with the Apache-2.0 or MIT license. Do not use weights with the Gemma, Llama or CC BY-NC license. Many Polish models from September 2024 or later have the Gemma license: check each model card.
   - Do not use these components: spaCy Polish models (GPL-3.0), PyMuPDF (AGPL-3.0), Elasticsearch (AGPL, SSPL, ELv2), Neo4j Community (GPL-3.0).
-- Record each library, component, model, data source, service and AI tool with its license in `README.md`.
+- Record each library, component, model, data source, service and AI tool with its license in `docs/DETAILS.pl.md`.
 
 ## Personal data and security
 
@@ -220,7 +221,7 @@ These differences to `KAGGLE.md` apply in this repository:
 - On Kaggle, install only `requirements-kaggle.txt`. Thus the PyTorch GPU build of Kaggle stays. Write the version of PyTorch into the log.
 - Number the jobs (`YYYY-MM-DD_NN_<job>`) with the same parity rule as the branches (see "Git").
 - Keep the small output files of a job in `jobs/runs/<job folder>/output/<codename>/`. Do not commit model weights, embeddings or large data.
-- If the application uses a result of a job (for example an index or a table), write in `README.md` the job, the date and the data that made it.
+- If the application uses a result of a job (for example an index or a table), write in `docs/DETAILS.pl.md` the job, the date and the data that made it.
 
 ## Tests
 
