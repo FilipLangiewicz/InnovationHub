@@ -2,6 +2,14 @@
 
 Add an entry after each step of work. Give the date, the person and the changes. The newest entry is at the top.
 
+## 2026-11-23, FilipLangiewicz (branch main)
+
+- Move the repository to `FilipLangiewicz/InnovationHub`. All commits and their authors stay the same.
+- Remove the branches that are merged into `main`.
+- README: a new short version in English. The full description in Polish is now in `docs/DETAILS.pl.md`.
+- README: remove the link to the demo version on Cloud Run and the team section.
+- `AGENTS.md`: `README.md` is in English, and the full description is in `docs/DETAILS.pl.md`.
+
 ## 2026-11-22, MaciejMomot (branch 79-video-script)
 
 - Add `docs/video/`: the procedure that makes the demo video (3 minutes or less).
